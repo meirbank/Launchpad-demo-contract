@@ -527,7 +527,7 @@ contract Launchpad {
      */
     function deposit() public payable {
         require(theWhitelist[msg.sender] > 0, "Only whitelisted addresses can participate.");
-        require(theWhitelist[msg.sender] > msg.value, "You are not whitelisted to contribute that much!");
+        require(theWhitelist[msg.sender] < msg.value, "You are not whitelisted to contribute that much!");
         require(block.timestamp <= endDate, "End date already exceeded.");
         require(block.timestamp > startDate, "Start date not reached.");
         require(sold < maxForSale, "Offering is over");
